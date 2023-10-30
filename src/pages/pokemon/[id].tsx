@@ -52,6 +52,7 @@ export default function Pokemon() {
 
   return data ? (
     <div>
+      <Link href={"/"}>Back to Search</Link>
       <PokemonInfo data={data} />
       <div className="flex gap-2">
         <Link rel="stylesheet" href={`${data.id - 1}`}>
@@ -63,6 +64,9 @@ export default function Pokemon() {
       </div>
     </div>
   ) : (
-    <div>Loading...</div> // visa om något gått fel
+    <>
+      <Link href={"/"}>Back to Search</Link>
+      <div>Loading...</div>
+    </>
   );
 }
