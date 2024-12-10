@@ -34,7 +34,7 @@ export default function PokeHeightWeight({
       <div
         className={`flex flex-row items-end justify-center ${
           !pokemonIsBigger && "gap-4 py-2"
-        } bg-gray-300 h-40 w-full rounded-lg`}
+        } bg-gray-200 h-40 w-full rounded-lg`}
       >
         <img
           className="brightness-0 object-contain"
