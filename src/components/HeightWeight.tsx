@@ -43,7 +43,7 @@ export default function HeightWeight({
           alt="Pokémon silhouette"
         />
         <img
-          className="brightness-0 object-contain "
+          className="brightness-0 object-contain"
           style={{ height: pokemonIsBigger ? `${heightRatio * 100}%` : "100%" }}
           src={
             maleOrFemale === 0
