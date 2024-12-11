@@ -1,7 +1,7 @@
 import { Pokemon } from "@/types/types";
-import PokeStats from "./PokeStats";
-import { link } from "fs";
-import PokeHeightWeight from "./PokeHeightWeight";
+import Stats from "./Stats";
+import HeightWeight from "./HeightWeight";
+import Types from "./Types";
 
 export default function PokemonInfo({ data }: { data: Pokemon }) {
   const { id, name, types, abilities, weight, height, stats, artwork } = data;
@@ -28,21 +28,8 @@ export default function PokemonInfo({ data }: { data: Pokemon }) {
             alt="Shiny"
           />
         </div>
-        <div className={`${baseStyle} flex flex-col items-center`}>
-          <h3 className="mt-1 underline">Types</h3>
-          <ul className="flex flex-col justify-center grow">
-            {types.map((type, index) => {
-              return (
-                <li
-                  className=""
-                  key={index}
-                >
-                  {type.charAt(0).toUpperCase()}
-                  {type.slice(1)}
-                </li>
-              );
-            })}
-          </ul>
+        <div className={`${baseStyle}`}>
+          <Types types={types} />
         </div>
         <div className={`${baseStyle} flex flex-col items-center`}>
           <h3 className="mt-1 underline">Abilities</h3>
@@ -61,14 +48,14 @@ export default function PokemonInfo({ data }: { data: Pokemon }) {
           </ul>
         </div>
         <div className={`${baseStyle}`}>
-          <PokeHeightWeight
+          <HeightWeight
             height={height}
             weight={weight}
             artwork={artwork.default}
           />
         </div>
         <div className={`${baseStyle} col-start-2 col-span-3 row-start-2`}>
-          <PokeStats stats={stats} />
+          <Stats stats={stats} />
         </div>
       </div>
     </div>

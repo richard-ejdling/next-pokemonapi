@@ -1,4 +1,4 @@
-export default function PokeHeightWeight({
+export default function HeightWeight({
   height,
   weight,
   artwork,
