@@ -2,7 +2,7 @@ import { Pokemon } from "@/types/types";
 
 type PokemonStats = Pick<Pokemon, "stats">;
 
-export default function PokemonStats({ stats }: PokemonStats) {
+export default function Stats({ stats }: PokemonStats) {
   const { hp, attack, defence, special_attack, special_defence, speed } = {
     ...stats,
   };

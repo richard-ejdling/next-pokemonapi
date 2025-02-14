@@ -1,4 +1,4 @@
-export default function PokeHeightWeight({
+export default function HeightWeight({
   height,
   weight,
   artwork,
@@ -34,7 +34,7 @@ export default function PokeHeightWeight({
       <div
         className={`flex flex-row items-end justify-center ${
           !pokemonIsBigger && "gap-4 py-2"
-        } bg-gray-300 h-40 w-full rounded-lg`}
+        } bg-gray-200 h-40 w-full rounded-lg`}
       >
         <img
           className="brightness-0 object-contain"
@@ -43,7 +43,7 @@ export default function PokeHeightWeight({
           alt="Pokémon silhouette"
         />
         <img
-          className="brightness-0 object-contain "
+          className="brightness-0 object-contain"
           style={{ height: pokemonIsBigger ? `${heightRatio * 100}%` : "100%" }}
           src={
             maleOrFemale === 0
