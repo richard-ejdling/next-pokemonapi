@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 type PokemonType =
   | "normal"
   | "fire"
@@ -22,6 +24,45 @@ type Shades = {
   bg: string;
   borderB: string;
   borderT: string;
+};
+
+type DamageRelations = {
+  no_damage_to: [
+    {
+      name: string;
+      url: string;
+    }
+  ];
+  half_damage_to: [
+    {
+      name: string;
+      url: string;
+    }
+  ];
+  double_damage_to: [
+    {
+      name: string;
+      url: string;
+    }
+  ];
+  no_damage_from: [
+    {
+      name: string;
+      url: string;
+    }
+  ];
+  half_damage_from: [
+    {
+      name: string;
+      url: string;
+    }
+  ];
+  double_damage_from: [
+    {
+      name: string;
+      url: string;
+    }
+  ];
 };
 
 const typeColors: {
@@ -49,21 +90,40 @@ const typeColors: {
   fairy: { bg: "bg-[#D685D2]", borderT: "border-t-[#F4A4F6]", borderB: "border-b-[#A65D92]" },
 };
 
-export default function ({ types }: { types: string[] }) {
+export default function PokémonTypes ({ types }: { types: string[] }) {
+  const [typeData, setTypeData] = useState<DamageRelations[]>([]);
+
+  useEffect(() => {
+    async function fetchData(type: string) {
+      try {
+        const response = await fetch(`https://pokeapi.co/api/v2/type/${type}/`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data);
+      } catch {}
+    }
+
+    function handleFetch() {
+      types.forEach((type) => {
+        fetchData(type);
+      });
+    }
+
+    handleFetch();
+  }, [types]);
+
   return (
     <div className="flex flex-col items-center h-full">
       <h3 className="mt-1 underline">Types</h3>
       <ul className="flex flex-col justify-center gap-2 grow">
         {types.map((type, index) => {
-          const {
-            bg,
-            borderB,
-            borderT,
-          }: Shades = typeColors[type as PokemonType];
+          const { bg, borderB, borderT }: Shades = typeColors[type as PokemonType];
           return (
             <li
               className={`font-semibold ${bg} border-t border-b ${borderB} ${borderT}  w-20 px-1 rounded-[3px] text-center`}
-              style={{textShadow: "1px 1px dimgrey"}}
+              style={{ textShadow: "1px 1px dimgrey" }}
               key={index}
             >
               {type.toUpperCase()}

@@ -1,7 +1,7 @@
 import { Pokemon } from "@/types/types";
 import Stats from "./Stats";
 import HeightWeight from "./HeightWeight";
-import Types from "./Types";
+import PokémonTypes from "./PokémonTypes";
 
 export default function PokemonInfo({ data }: { data: Pokemon }) {
   const { id, name, types, abilities, weight, height, stats, artwork } = data;
@@ -29,7 +29,7 @@ export default function PokemonInfo({ data }: { data: Pokemon }) {
           />
         </div>
         <div className={`${baseStyle}`}>
-          <Types types={types} />
+          <PokémonTypes types={types} />
         </div>
         <div className={`${baseStyle} flex flex-col items-center`}>
           <h3 className="mt-1 underline">Abilities</h3>
