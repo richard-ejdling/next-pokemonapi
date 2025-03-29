@@ -8,16 +8,13 @@ export default function HeightWeight({
   artwork: string;
 }) {
   const maleOrFemale = Math.floor(Math.random() * 2); // 0 = male, 1 = female
-  console.log(maleOrFemale);
 
   const humanHeight = maleOrFemale === 0 ? 17.5 : 16.5;
 
   const pokemonIsBigger = height > humanHeight;
-  console.log(pokemonIsBigger, height, humanHeight);
 
   const heightRatio = pokemonIsBigger ? humanHeight / height : height / humanHeight;
 
-  console.log(heightRatio);
 
   return (
     <div className="flex flex-col gap-2 justify-between items-center h-full p-2">

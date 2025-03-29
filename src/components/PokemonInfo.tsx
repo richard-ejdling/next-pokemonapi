@@ -9,7 +9,7 @@ export default function PokemonInfo({ data }: { data: Pokemon }) {
   const baseStyle = "bg-gray-600 rounded-lg h-60";
 
   return (
-    <div className="flex flex-col gap-4 bg-gray-800 rounded-lg max-w-5xl p-4 m-auto">
+    <div className="flex flex-col gap-4 bg-gray-800 rounded-lg p-4">
       <h2>{`#${id} ${name.charAt(0).toUpperCase()}${name.slice(1)}`}</h2>
       <div className="grid gap-4 grid-cols-4 grid-rows-2">
         <div className={`${baseStyle} col-start-1 row-start-1 flex flex-col items-center`}>

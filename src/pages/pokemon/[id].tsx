@@ -2,70 +2,122 @@ import PokemonInfo from "@/components/PokemonInfo";
 import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useMemo, useState } from "react";
 import type { Pokemon } from "@/types/types";
+import type { NextPrevPokemon } from "@/types/types";
+import { fetcher } from "@/utils/fetcher";
+import { BsChevronCompactLeft } from "react-icons/bs";
+import { BsChevronCompactRight } from "react-icons/bs";
+
+/* const fetcher = async (id: number | string) => {
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  if (!res.ok) throw new Error("Failed to fetch data");
+  return res.json();
+}; */
 
 export default function Pokemon() {
-  const [data, setData] = useState<Pokemon | null>(null);
+  const [data, setData] = useState<Pokemon>();
+  const [prevPokemon, setPrevPokemon] = useState<NextPrevPokemon>();
+  const [nextPokemon, setNextPokemon] = useState<NextPrevPokemon>();
 
   const router = useRouter();
-  const id = router.query.id;
+  const id = router.query.id as string;
+
+  async function getData(
+    id: string,
+    setState: React.Dispatch<SetStateAction<Pokemon | undefined>>
+  ) {
+    /* const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    const responeData = await response.json(); */
+    const data = await fetcher(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    console.log(id, data);
+    // gör error om fel id skickats/ inte fått svar tillbaka: ex if(response.ok){} else nånting(response.status) osv.
+
+    const pokemon: Pokemon = {
+      id: data.id,
+      name: data.name,
+      types: data.types.map((type: any) => type.type.name),
+      abilities: data.abilities.map((ability: any) => ability.ability.name),
+      weight: data.weight,
+      height: data.height,
+      stats: {
+        hp: data.stats[0].base_stat,
+        attack: data.stats[1].base_stat,
+        defence: data.stats[2].base_stat,
+        special_attack: data.stats[3].base_stat,
+        special_defence: data.stats[4].base_stat,
+        speed: data.stats[5].base_stat,
+      },
+      artwork: {
+        default: data.sprites.other["official-artwork"].front_default,
+        shiny: data.sprites.other["official-artwork"].front_shiny,
+      },
+    };
+
+    //zod för att pokemon variabeln ska inehålla rätt saker / inte sakna något?
+    setState(pokemon);
+  }
 
   useEffect(() => {
-    async function getData() {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-      const responeData = await response.json();
-      console.log(response)
-      console.log(responeData);
-      // error om fel id skickats/ inte fått svar tillbaka: ex if(response.ok){} else nånting(response.status) osv.
-
-      const pokemon: Pokemon = {
-        id: responeData.id,
-        name: responeData.name,
-        types: responeData.types.map((type: any) => type.type.name),
-        abilities: responeData.abilities.map((ability: any) => ability.ability.name),
-        weight: responeData.weight,
-        height: responeData.height,
-        stats: {
-          hp: responeData.stats[0].base_stat,
-          attack: responeData.stats[1].base_stat,
-          defence: responeData.stats[2].base_stat,
-          special_attack: responeData.stats[3].base_stat,
-          special_defence: responeData.stats[4].base_stat,
-          speed: responeData.stats[5].base_stat,
-        },
-        artwork: {
-          default: responeData.sprites.other["official-artwork"].front_default,
-          shiny: responeData.sprites.other["official-artwork"].front_shiny,
-        },
-      };
-
-      //zod för att pokemon variabeln ska inehålla rätt saker / inte sakna något?
-      setData(pokemon);
-    }
-
     if (id) {
-      getData();
+      getData(id, setData);
     }
   }, [id]);
 
+  useMemo(() => {
+    if (data?.id) {
+      data.id !== 1 && getData((data.id - 1).toString(), setPrevPokemon);
+      // ev. sätt gränsen efter sista pokemonen i pokedexen istället får ett nummer
+      // för ev nya pokemon (+ för next knappen)
+      data.id !== 1025 && getData((data.id + 1).toString(), setNextPokemon);
+    }
+  }, [data]); // hämta förra och nästa och extrahera sprite, namn och ev. nummer
+
   return data ? (
-    <div>
+    <div className="bg-gray-950 max-w-5xl m-auto">
       <Link href={"/"}>Back to Search</Link>
       <PokemonInfo data={data} />
-      <div className="flex gap-2">
-        <Link
-          rel="stylesheet"
-          href={`${data.id - 1}`}
-        >
-          {"< Previous"}
-        </Link>
-        <Link
-          rel="stylesheet"
-          href={`${data.id + 1}`}
-        >
-          {"Next >"}
-        </Link>
+      <div className="flex my-2 justify-between">
+        {data.id !== 1 && (
+          <Link
+            rel="stylesheet"
+            href={`${data.id - 1}`}
+          >
+            <div className="flex items-center">
+              <BsChevronCompactLeft className="h-full" />
+              {prevPokemon
+                ? `#${prevPokemon.id} ${prevPokemon.name
+                    .charAt(0)
+                    .toUpperCase()}${prevPokemon.name.slice(1)}`
+                : "previous"}
+              <img
+                className="h-6 pl-2"
+                src={prevPokemon?.artwork.default}
+                alt="previous pokemon sprite"
+              />
+            </div>
+          </Link>
+        )}
+        {data.id !== 1025 && (
+          <Link
+            rel="stylesheet"
+            href={`${data.id + 1}`}
+          >
+            <div className="flex items-center">
+              <img
+                className="h-6 pr-2"
+                src={nextPokemon?.artwork.default}
+                alt="next pokemon sprite"
+              />
+              {nextPokemon
+                ? `#${nextPokemon.id} ${nextPokemon.name
+                    .charAt(0)
+                    .toUpperCase()}${nextPokemon.name.slice(1)}`
+                : "next"}
+              <BsChevronCompactRight />
+            </div>
+          </Link>
+        )}
       </div>
     </div>
   ) : (
