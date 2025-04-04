@@ -75,20 +75,18 @@ export default function Pokemon() {
   }, [data]); // hämta förra och nästa och extrahera sprite, namn och ev. nummer
 
   return data ? (
-    <div className="bg-gray-950 max-w-5xl m-auto mt-2">
-      <Link href={"/"} className="flex items-center">{<BsChevronCompactLeft />}Back to Search</Link>
-      <div className="my-1">
+    <div className="flex flex-col gap-2 bg-gray-950 max-w-5xl m-auto mt-2">
+      <Link href={"/"} className="flex items-center">{"< "}Back to Search</Link>
         <PokemonSearch />
-      </div>
       <PokemonInfo data={data} />
-      <div className="flex my-2 justify-between">
+      <div className="flex justify-between">
         {data.id !== 1 && (
           <Link
             rel="stylesheet"
             href={`${data.id - 1}`}
           >
             <div className="flex items-center">
-              <BsChevronCompactLeft className="h-full" />
+              {"< "}
               {prevPokemon
                 ? `#${prevPokemon.id} ${prevPokemon.name
                     .charAt(0)
@@ -118,7 +116,7 @@ export default function Pokemon() {
                     .charAt(0)
                     .toUpperCase()}${nextPokemon.name.slice(1)}`
                 : "next"}
-              <BsChevronCompactRight />
+              {" >"}
             </div>
           </Link>
         )}
