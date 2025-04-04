@@ -1,4 +1,4 @@
-import PokemonInfo from "@/components/PokemonInfo";
+import PokemonInfo from "@/components/pokemon/PokemonInfo";
 import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -8,6 +8,7 @@ import type { NextPrevPokemon } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
 import { BsChevronCompactLeft } from "react-icons/bs";
 import { BsChevronCompactRight } from "react-icons/bs";
+import PokemonSearch from "@/components/ui/PokemonSearch";
 
 /* const fetcher = async (id: number | string) => {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -74,8 +75,11 @@ export default function Pokemon() {
   }, [data]); // hämta förra och nästa och extrahera sprite, namn och ev. nummer
 
   return data ? (
-    <div className="bg-gray-950 max-w-5xl m-auto">
-      <Link href={"/"}>Back to Search</Link>
+    <div className="bg-gray-950 max-w-5xl m-auto mt-2">
+      <Link href={"/"} className="flex items-center">{<BsChevronCompactLeft />}Back to Search</Link>
+      <div className="my-1">
+        <PokemonSearch />
+      </div>
       <PokemonInfo data={data} />
       <div className="flex my-2 justify-between">
         {data.id !== 1 && (
