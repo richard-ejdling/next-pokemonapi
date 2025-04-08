@@ -117,12 +117,12 @@ export default function PokémonTypes ({ types }: { types: string[] }) {
   return (
     <div className="flex flex-col items-center h-full">
       <h3 className="mt-1 underline">Types</h3>
-      <ul className="flex flex-col justify-center gap-2 grow">
+      <ul className="flex flex-col justify-center gap-2 h-full w-fit">
         {types.map((type, index) => {
           const { bg, borderB, borderT }: Shades = typeColors[type as PokemonType];
           return (
             <li
-              className={`font-semibold ${bg} border-t border-b ${borderB} ${borderT}  w-20 px-1 rounded-[3px] text-center`}
+              className={`font-semibold ${bg} border-t border-b ${borderB} ${borderT} w-full px-1 pb-1 rounded-[3px] text-center`}
               style={{ textShadow: "1px 1px dimgrey" }}
               key={index}
             >

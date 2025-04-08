@@ -31,17 +31,21 @@ export default function PokemonInfo({ data }: { data: Pokemon }) {
         <div className={`${baseStyle}`}>
           <PokémonTypes types={types} />
         </div>
-        <div className={`${baseStyle} flex flex-col items-center`}>
+        <div className={`${baseStyle} flex flex-col items-center px-2`}>
           <h3 className="mt-1 underline">Abilities</h3>
-          <ul className="flex flex-col justify-center grow">
+          <ul className="flex flex-col justify-center h-full gap-2">
             {abilities.map((ability, index) => {
               return (
                 <li
                   className=""
                   key={index}
                 >
-                  {ability.charAt(0).toUpperCase()}
-                  {ability.slice(1)}
+                  {ability.length <= 12
+                    ? ability.charAt(0).toUpperCase() + ability.slice(1)
+                    : ability.charAt(0).toUpperCase() +
+                      ability.slice(1, 12) +
+                      "-" +
+                      ability.slice(-(ability.length - 12))}
                 </li>
               );
             })}
