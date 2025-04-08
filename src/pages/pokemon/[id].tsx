@@ -76,14 +76,14 @@ export default function Pokemon() {
   }, [data]); // hämta förra och nästa och extrahera sprite, namn och ev. nummer
 
   return data ? (
-    <div className="flex flex-col gap-2 bg-gray-950 max-w-5xl m-auto mt-2">
+    <div className="flex flex-col gap-2 bg-gray-950 max-w-5xl m-auto my-2 max-lg:mx-2">
       <Link
         href={"/"}
         className="flex items-center"
       >
         {"< "}Back to Search
       </Link>
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center flex-wrap">
         <PokemonSearch />
         <Random />
       </div>
@@ -102,7 +102,7 @@ export default function Pokemon() {
                     .toUpperCase()}${prevPokemon.name.slice(1)}`
                 : "previous"}
               <img
-                className="h-6 pl-2"
+                className="h-6 pl-2 max-[400px]:pl-0"
                 src={prevPokemon?.artwork.default}
                 alt="previous pokemon sprite"
               />
@@ -116,7 +116,7 @@ export default function Pokemon() {
           >
             <div className="flex items-center">
               <img
-                className="h-6 pr-2"
+                className="h-6 pr-2 max-[400px]:pr-0"
                 src={nextPokemon?.artwork.default}
                 alt="next pokemon sprite"
               />
