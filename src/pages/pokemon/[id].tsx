@@ -9,6 +9,7 @@ import { fetcher } from "@/utils/fetcher";
 import { BsChevronCompactLeft } from "react-icons/bs";
 import { BsChevronCompactRight } from "react-icons/bs";
 import PokemonSearch from "@/components/ui/PokemonSearch";
+import Random from "@/components/ui/Random";
 
 /* const fetcher = async (id: number | string) => {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -31,7 +32,7 @@ export default function Pokemon() {
     /* const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const responeData = await response.json(); */
     const data = await fetcher(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    console.log(id, data);
+    /* console.log(id, data); */
     // gör error om fel id skickats/ inte fått svar tillbaka: ex if(response.ok){} else nånting(response.status) osv.
 
     const pokemon: Pokemon = {
@@ -76,8 +77,16 @@ export default function Pokemon() {
 
   return data ? (
     <div className="flex flex-col gap-2 bg-gray-950 max-w-5xl m-auto mt-2">
-      <Link href={"/"} className="flex items-center">{"< "}Back to Search</Link>
+      <Link
+        href={"/"}
+        className="flex items-center"
+      >
+        {"< "}Back to Search
+      </Link>
+      <div className="flex gap-2 items-center">
         <PokemonSearch />
+        <Random />
+      </div>
       <PokemonInfo data={data} />
       <div className="flex justify-between">
         {data.id !== 1 && (

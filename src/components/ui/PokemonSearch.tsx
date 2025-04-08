@@ -13,7 +13,7 @@ export default function PokemonSearch({ label, route="" }: { label?: string, rou
     }
   }
   return (
-    <form onSubmit={handleSearch}>
+    <form onSubmit={handleSearch} className="flex items-center">
       <label htmlFor="pokemon-search">{label}</label>
       <input
         onChange={(e) => setSearch(e.target.value)}
@@ -23,7 +23,7 @@ export default function PokemonSearch({ label, route="" }: { label?: string, rou
         name="pokemon"
         placeholder="Name or Number"
       />
-      <button className="ml-2">Search</button>
+      <button className="border-2 border-dashed rounded-md px-2 ml-2 pb-1 hover:bg-gray-800 active:bg-gray-600">Search</button>
     </form>
   );
 }

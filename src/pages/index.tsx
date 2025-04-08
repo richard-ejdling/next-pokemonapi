@@ -1,4 +1,5 @@
 import PokemonSearch from "@/components/ui/PokemonSearch";
+import Random from "@/components/ui/Random";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         </a>
       </h1>
       <PokemonSearch route={"pokemon"} />
+      <Random route="pokemon" /> 
     </div>
   );
 }
