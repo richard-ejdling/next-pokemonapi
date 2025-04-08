@@ -18,7 +18,7 @@ export default function HeightWeight({
 
   return (
     <div className="flex flex-col gap-2 justify-between items-center h-full p-2">
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-row justify-between w-full">
         <div className="text-center">
           <h3>Height:</h3>
           <p>{height / 10} m</p>
