@@ -1,5 +1,7 @@
 import { NextPrevPokemon, Pokemon } from "@/types/types";
+import { fetcher } from "@/utils/fetcher";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function PrevNext({
   data,
@@ -10,6 +12,17 @@ export default function PrevNext({
   prevPokemon: NextPrevPokemon;
   nextPokemon: NextPrevPokemon;
 }) {
+  const [entries, setEntries] = useState(1025);
+
+  async function getEntriesNr() {
+    const data = await fetcher("https://pokeapi.co/api/v2/pokedex/1/");
+    data && typeof data.pokemon_entries && setEntries(data.pokemon_entries.number);
+  }
+
+  useEffect(() => {
+    getEntriesNr();
+  }, []);
+
   return (
     <div className="flex justify-between max-sm:text-xs">
       {data.id !== 1 ? (
@@ -47,7 +60,7 @@ export default function PrevNext({
       ) : (
         <div />
       )}
-      {data.id !== 1025 && (
+      {data.id !== entries && (
         <Link
           rel="stylesheet"
           href={`${data.id + 1}`}
