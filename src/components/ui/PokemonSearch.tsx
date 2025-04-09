@@ -16,6 +16,9 @@ export default function PokemonSearch({
 
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+
+    
     if (search) {
       router.push(route ? `${route}/${search}` : search);
     }
@@ -27,7 +30,7 @@ export default function PokemonSearch({
     >
       {label ? <label htmlFor="pokemon-search">{label}</label> : ""}
       <input
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value.replace(' ', '-'))}
         className="text-black rounded-lg px-2 py-1 w-72 border-[6px] border-double border-black"
         type="text"
         id="pokemon-search"

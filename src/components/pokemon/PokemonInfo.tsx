@@ -41,19 +41,14 @@ export default function PokemonInfo({ data }: { data: Pokemon }) {
           className={`${baseStyle} max-[400px]:col-span-6 max-[400px]:row-start-3 max-[770px]:col-start-4 max-[770px]:col-span-3 max-lg:col-start-3 max-lg:row-start-2 max-lg:col-span-2 flex flex-col items-center px-2`}
         >
           <h3 className="mt-1 underline">Abilities</h3>
-          <ul className="flex flex-col justify-center h-full gap-2">
+          <ul className="flex flex-col justify-center h-full gap-2 w-full list-disc pl-6">
             {abilities.map((ability, index) => {
               return (
                 <li
-                  className=""
+                  className="break-words"
                   key={index}
                 >
-                  {ability.length <= 12
-                    ? ability.charAt(0).toUpperCase() + ability.slice(1)
-                    : ability.charAt(0).toUpperCase() +
-                      ability.slice(1, 12) +
-                      "-" +
-                      ability.slice(-(ability.length - 12))}
+                  {ability.charAt(0).toUpperCase() + ability.slice(1)}
                 </li>
               );
             })}

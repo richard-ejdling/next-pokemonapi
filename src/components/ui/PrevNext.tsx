@@ -24,7 +24,7 @@ export default function PrevNext({
                 <div className="flex justify-center items-center">
                   #{prevPokemon.id}
                   <img
-                    className="h-6 pl-2 max-[400px]:pl-0 sm:hidden"
+                    className="h-6 pl-2 sm:hidden"
                     src={prevPokemon?.artwork.default}
                     alt="previous pokemon sprite"
                   />
@@ -38,7 +38,7 @@ export default function PrevNext({
               "previous"
             )}
             <img
-              className="h-6 pl-2 max-[400px]:pl-0 max-sm:hidden"
+              className="h-6 pl-2 max-sm:hidden"
               src={prevPokemon?.artwork.default}
               alt="previous pokemon sprite"
             />
@@ -54,19 +54,19 @@ export default function PrevNext({
         >
           <div className="flex items-center">
             <img
-              className="h-6 pr-2 max-[400px]:pr-0 max-sm:hidden"
+              className="h-6 pr-2 max-sm:hidden"
               src={nextPokemon?.artwork.default}
               alt="next pokemon sprite"
             />
             {nextPokemon ? (
               <div className="flex flex-col sm:flex-row">
                 <div className="flex justify-center items-center">
-                  #{nextPokemon.id}
                   <img
-                    className="h-6 pr-2 max-[400px]:pr-0 sm:hidden"
+                    className="h-6 pr-2 sm:hidden"
                     src={nextPokemon?.artwork.default}
                     alt="next pokemon sprite"
                   />
+                  #{nextPokemon.id}
                 </div>
                 <div>
                   {nextPokemon.name.charAt(0).toUpperCase()}
