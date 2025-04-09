@@ -10,6 +10,7 @@ import { BsChevronCompactLeft } from "react-icons/bs";
 import { BsChevronCompactRight } from "react-icons/bs";
 import PokemonSearch from "@/components/ui/PokemonSearch";
 import Random from "@/components/ui/Random";
+import PrevNext from "@/components/ui/PrevNext";
 
 /* const fetcher = async (id: number | string) => {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -87,49 +88,21 @@ export default function Pokemon() {
         <PokemonSearch />
         <Random />
       </div>
+      {prevPokemon && nextPokemon && (
+        <PrevNext
+          data={data}
+          prevPokemon={prevPokemon}
+          nextPokemon={nextPokemon}
+        />
+      )}
       <PokemonInfo data={data} />
-      <div className="flex justify-between">
-        {data.id !== 1 && (
-          <Link
-            rel="stylesheet"
-            href={`${data.id - 1}`}
-          >
-            <div className="flex items-center">
-              {"< "}
-              {prevPokemon
-                ? `#${prevPokemon.id} ${prevPokemon.name
-                    .charAt(0)
-                    .toUpperCase()}${prevPokemon.name.slice(1)}`
-                : "previous"}
-              <img
-                className="h-6 pl-2 max-[400px]:pl-0"
-                src={prevPokemon?.artwork.default}
-                alt="previous pokemon sprite"
-              />
-            </div>
-          </Link>
-        )}
-        {data.id !== 1025 && (
-          <Link
-            rel="stylesheet"
-            href={`${data.id + 1}`}
-          >
-            <div className="flex items-center">
-              <img
-                className="h-6 pr-2 max-[400px]:pr-0"
-                src={nextPokemon?.artwork.default}
-                alt="next pokemon sprite"
-              />
-              {nextPokemon
-                ? `#${nextPokemon.id} ${nextPokemon.name
-                    .charAt(0)
-                    .toUpperCase()}${nextPokemon.name.slice(1)}`
-                : "next"}
-              {" >"}
-            </div>
-          </Link>
-        )}
-      </div>
+      {prevPokemon && nextPokemon && (
+        <PrevNext
+          data={data}
+          prevPokemon={prevPokemon}
+          nextPokemon={nextPokemon}
+        />
+      )}
     </div>
   ) : (
     <>

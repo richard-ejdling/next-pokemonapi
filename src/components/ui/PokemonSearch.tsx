@@ -34,7 +34,7 @@ export default function PokemonSearch({
         name="pokemon"
         placeholder="Name or Number"
       />
-      <button className="border-2 border-dashed rounded-md px-2 pb-1 hover:bg-gray-800 active:bg-gray-600">
+      <button className="border-2 border-dashed rounded-md px-2 pb-1 hover:bg-gray-800 active:bg-gray-600 select-none">
         Search
       </button>
     </form>
