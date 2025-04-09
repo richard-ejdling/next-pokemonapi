@@ -1,7 +1,15 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function PokemonSearch({ label, route = "" }: { label?: string; route?: string }) {
+export default function PokemonSearch({
+  label,
+  route = "",
+  center = false,
+}: {
+  label?: string;
+  route?: string;
+  center?: boolean;
+}) {
   const [search, setSearch] = useState("");
 
   const router = useRouter();
@@ -15,7 +23,7 @@ export default function PokemonSearch({ label, route = "" }: { label?: string; r
   return (
     <form
       onSubmit={handleSearch}
-      className="flex items-center flex-wrap gap-2"
+      className={`flex items-center flex-wrap gap-2 ${center && "justify-center"}`}
     >
       {label ? <label htmlFor="pokemon-search">{label}</label> : ""}
       <input

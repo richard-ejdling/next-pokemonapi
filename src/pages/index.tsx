@@ -3,8 +3,8 @@ import Random from "@/components/ui/Random";
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center items-center h-[80vh] gap-10">
-      <h1 className="w-1/2">
+    <div className="flex flex-col justify-center items-center mx-4 h-[80vh] gap-10">
+      <h1 className="lg:w-1/2">
         <a href="https://www.textstudio.com/">
           {" "}
           <img
@@ -13,8 +13,11 @@ export default function Home() {
           />
         </a>
       </h1>
-      <PokemonSearch route={"pokemon"} />
-      <Random route="pokemon" /> 
+      <PokemonSearch
+        route={"pokemon"}
+        center={true}
+      />
+      <Random route="pokemon" />
     </div>
   );
 }
