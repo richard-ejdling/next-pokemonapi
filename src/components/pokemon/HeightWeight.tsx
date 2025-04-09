@@ -18,7 +18,7 @@ export default function HeightWeight({
 
   return (
     <div className="flex flex-col gap-2 justify-between items-center h-full p-2">
-      <div className="flex flex-row justify-between w-full">
+      <div className="flex flex-row max-[770px]:justify-center max-[770px]:gap-4 justify-between w-full ">
         <div className="text-center">
           <h3>Height:</h3>
           <p>{height / 10} m</p>
@@ -31,7 +31,7 @@ export default function HeightWeight({
       <div
         className={`flex flex-row items-end justify-center ${
           !pokemonIsBigger && "gap-4 py-2"
-        } bg-gray-200 h-40 w-full rounded-lg`}
+        } bg-gray-200 h-40 w-full max-[770px]:w-fit max-[770px]:px-4 max-[770px]:gap-4 rounded-lg`}
       >
         <img
           className="brightness-0 object-contain"

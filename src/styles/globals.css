@@ -28,6 +28,9 @@
   textarea {
     @apply indent-1;
   }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 :root {

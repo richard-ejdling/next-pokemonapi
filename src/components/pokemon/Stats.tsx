@@ -22,50 +22,50 @@ export default function Stats({ stats }: PokemonStats) {
         <div className="flex">
           <span className="ml-1">{total}</span>
         </div>
-        <div className="flex">
+        <div className="flex items-end">
           {/* <h4 className="w-[10%]">HP</h4> */}
           <div
-            className={`bg-red-500 text-right pr-2`}
+            className={`bg-red-500 text-end h-5`}
             style={{ width: `${(100 / 255) * hp}%` }}
           ></div>
           <span className="ml-1">{hp}</span>
         </div>
-        <div className="flex">
+        <div className="flex items-end">
           {/* <h4 className="w-[10%]">Attack</h4> */}
           <div
-            className={`bg-orange-500 text-right pr-2`}
+            className={`bg-orange-500  text-end h-5`}
             style={{ width: `${(100 / 255) * attack}%` }}
           ></div>
           <span className="ml-1">{attack}</span>
         </div>
-        <div className="flex">
+        <div className="flex items-end">
           {/* <h4 className="w-[10%]">Defence</h4> */}
           <div
-            className={`bg-yellow-500 text-right pr-2`}
+            className={`bg-yellow-500  text-end h-5`}
             style={{ width: `${(100 / 255) * defence}%` }}
           ></div>
           <span className="ml-1">{defence}</span>
         </div>
-        <div className="flex">
+        <div className="flex items-end">
           {/* <h4 className="w-[10%]">Sp. Atk</h4> */}
           <div
-            className={`bg-blue-500 text-right pr-2`}
+            className={`bg-blue-500  text-end h-5`}
             style={{ width: `${(100 / 255) * special_attack}%` }}
           ></div>
           <span className="ml-1">{special_attack}</span>
         </div>
-        <div className="flex">
+        <div className="flex items-end">
           {/* <h4 className="w-[10%]">Sp. Def</h4> */}
           <div
-            className={`bg-green-500 text-right pr-2`}
+            className={`bg-green-500  text-end h-5`}
             style={{ width: `${(100 / 255) * special_defence}%` }}
           ></div>
           <span className="ml-1">{special_defence}</span>
         </div>
-        <div className="flex">
+        <div className="flex items-end">
           {/* <h4 className="w-[10%]">Speed</h4> */}
           <div
-            className={`bg-pink-500 text-right pr-2`}
+            className={`bg-pink-500  text-end h-5`}
             style={{ width: `${(100 / 255) * speed}%` }}
           ></div>
           <span className="ml-1">{speed}</span>
