@@ -1,9 +1,22 @@
+import { fetcher } from "@/utils/fetcher";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Random({ route = "" }: { route?: string }) {
   const router = useRouter();
 
-  const max = 1025;
+  const [entries, setEntries] = useState(1025);
+
+  async function getEntriesNr() {
+    const data = await fetcher("https://pokeapi.co/api/v2/pokedex/1/");
+    data && typeof data.pokemon_entries && setEntries(data.pokemon_entries.number);
+  }
+
+  useEffect(() => {
+    getEntriesNr();
+  }, []);
+
+  const max = entries ? entries : 1025;
   function randomPokemon() {
     const randomNr = Math.floor(Math.random() * max) + 1;
 
