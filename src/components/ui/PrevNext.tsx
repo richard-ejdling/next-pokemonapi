@@ -34,12 +34,13 @@ export default function PrevNext({
             {"< "}
             {prevPokemon ? (
               <div className="flex flex-col sm:flex-row">
+                <span className="sr-only">Go to previous Pokémon</span>
                 <div className="flex justify-center items-center">
                   #{prevPokemon.id}
                   <img
                     className="h-6 pl-2 sm:hidden"
                     src={prevPokemon?.artwork.default}
-                    alt="previous pokemon sprite"
+                    alt=""
                   />
                 </div>
                 <div>
@@ -53,7 +54,7 @@ export default function PrevNext({
             <img
               className="h-6 pl-2 max-sm:hidden"
               src={prevPokemon?.artwork.default}
-              alt="previous pokemon sprite"
+              alt=""
             />
           </div>
         </Link>
@@ -66,10 +67,11 @@ export default function PrevNext({
           href={`${data.id + 1}`}
         >
           <div className="flex items-center">
+            <span className="sr-only">Go to next Pokémon</span>
             <img
               className="h-6 pr-2 max-sm:hidden"
               src={nextPokemon?.artwork.default}
-              alt="next pokemon sprite"
+              alt=""
             />
             {nextPokemon ? (
               <div className="flex flex-col sm:flex-row">
@@ -77,7 +79,7 @@ export default function PrevNext({
                   <img
                     className="h-6 pr-2 sm:hidden"
                     src={nextPokemon?.artwork.default}
-                    alt="next pokemon sprite"
+                    alt=""
                   />
                   #{nextPokemon.id}
                 </div>
