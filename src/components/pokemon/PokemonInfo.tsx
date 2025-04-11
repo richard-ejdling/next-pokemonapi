@@ -19,7 +19,7 @@ export default function PokemonInfo({ data }: { data: Pokemon }) {
           <img
             className="h-2 grow object-contain"
             src={artwork.default}
-            alt="Normal"
+            alt="Normal artwork"
           />
         </div>
         <div
@@ -29,7 +29,7 @@ export default function PokemonInfo({ data }: { data: Pokemon }) {
           <img
             className="h-2 grow object-contain"
             src={artwork.shiny}
-            alt="Shiny"
+            alt="Shiny artwork"
           />
         </div>
         <div
@@ -48,7 +48,7 @@ export default function PokemonInfo({ data }: { data: Pokemon }) {
                   className="break-words"
                   key={index}
                 >
-                  {ability.charAt(0).toUpperCase() + ability.slice(1)}
+                  {ability.charAt(0).toUpperCase() + ability.slice(1).replace('-', ' ')}
                 </li>
               );
             })}
