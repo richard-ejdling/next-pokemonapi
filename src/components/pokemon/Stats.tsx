@@ -28,7 +28,7 @@ export default function Stats({ stats }: PokemonStats) {
               /* className={`${hp <= 45 && "hidden"} sm:hidden`} */
               style={{
                 textShadow:
-                  "1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
               }}
             >
               {hp}
@@ -48,7 +48,7 @@ export default function Stats({ stats }: PokemonStats) {
               /* className={`${attack <= 45 && "hidden"} sm:hidden`} */
               style={{
                 textShadow:
-                  "1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
               }}
             >
               {attack}
@@ -70,7 +70,7 @@ export default function Stats({ stats }: PokemonStats) {
               /* className={`${defence <= 45 && "hidden"} sm:hidden`} */
               style={{
                 textShadow:
-                  "1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
               }}
             >
               {defence}
@@ -92,7 +92,7 @@ export default function Stats({ stats }: PokemonStats) {
               /* className={`${special_attack <= 45 && "hidden"} sm:hidden`} */
               style={{
                 textShadow:
-                  "1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
               }}
             >
               {special_attack}
@@ -114,7 +114,7 @@ export default function Stats({ stats }: PokemonStats) {
               /* className={`${special_defence <= 45 && "hidden"} sm:hidden`} */
               style={{
                 textShadow:
-                  "1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
               }}
             >
               {special_defence}
@@ -138,7 +138,7 @@ export default function Stats({ stats }: PokemonStats) {
               /* className={`${speed <= 45 && "hidden"} sm:hidden`} */
               style={{
                 textShadow:
-                  "1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
               }}
             >
               {speed}
