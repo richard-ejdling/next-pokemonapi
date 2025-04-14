@@ -19,5 +19,3 @@ export type Pokemon = {
   };
 };
 export type PrevNextPokemon = { id: number; name: string; artwork: string };
-
-export type PrevNext = { id: number; name: string; artwork: string };
