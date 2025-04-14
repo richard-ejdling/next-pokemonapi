@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { SetStateAction, useEffect, useMemo, useState } from "react";
 import type { Pokemon } from "@/types/types";
-import type { NextPrevPokemon } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
 import { BsChevronCompactLeft } from "react-icons/bs";
 import { BsChevronCompactRight } from "react-icons/bs";
@@ -20,8 +19,6 @@ import PrevNext from "@/components/ui/PrevNext";
 
 export default function Pokemon() {
   const [data, setData] = useState<Pokemon>();
-  const [prevPokemon, setPrevPokemon] = useState<NextPrevPokemon>();
-  const [nextPokemon, setNextPokemon] = useState<NextPrevPokemon>();
 
   const router = useRouter();
   const id = router.query.id as string;
@@ -67,15 +64,6 @@ export default function Pokemon() {
     }
   }, [id]);
 
-  useMemo(() => {
-    if (data?.id) {
-      data.id !== 1 && getData((data.id - 1).toString(), setPrevPokemon);
-      // ev. sätt gränsen efter sista pokemonen i pokedexen istället får ett nummer
-      // för ev nya pokemon (+ för next knappen)
-      data.id !== 1025 && getData((data.id + 1).toString(), setNextPokemon);
-    }
-  }, [data]); // hämta förra och nästa och extrahera sprite, namn och ev. nummer
-
   return data ? (
     <div className="flex flex-col gap-2 bg-gray-950 max-w-5xl m-auto my-2 max-lg:mx-2">
       <Link
@@ -88,21 +76,9 @@ export default function Pokemon() {
         <PokemonSearch />
         <Random />
       </div>
-      {prevPokemon && nextPokemon && (
-        <PrevNext
-          data={data}
-          prevPokemon={prevPokemon}
-          nextPokemon={nextPokemon}
-        />
-      )}
+      <PrevNext id={data.id} />
       <PokemonInfo data={data} />
-      {prevPokemon && nextPokemon && (
-        <PrevNext
-          data={data}
-          prevPokemon={prevPokemon}
-          nextPokemon={nextPokemon}
-        />
-      )}
+      <PrevNext id={data.id} />
     </div>
   ) : (
     <>
