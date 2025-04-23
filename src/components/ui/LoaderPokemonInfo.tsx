@@ -3,7 +3,7 @@ export default function LoaderPokemonInfo() {
   const contentStyle = `bg-gray-400 animate-pulse rounded-md`;
   return (
     <>
-      <div className="flex justify-between max-sm:text-xs">
+      <div className="flex justify-between max-sm:text-xs py-2">
         <div className="flex items-center w-1/3 gap-2">
           {"<"}
           <div className={`${contentStyle} bg-gray-600 h-10 sm:h-6 w-full`}></div>
@@ -93,7 +93,7 @@ export default function LoaderPokemonInfo() {
           </div>
         </div>
       </div>
-      <div className="flex justify-between max-sm:text-xs">
+      <div className="flex justify-between max-sm:text-xs py-2">
         <div className="flex items-center w-1/3 gap-2">
           {"<"}
           <div className={`${contentStyle} bg-gray-600 h-10 sm:h-6 w-full`}></div>
