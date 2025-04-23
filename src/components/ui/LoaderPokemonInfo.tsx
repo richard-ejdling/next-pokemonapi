@@ -6,11 +6,11 @@ export default function LoaderPokemonInfo() {
       <div className="flex justify-between max-sm:text-xs">
         <div className="flex items-center w-1/3 gap-2">
           {"<"}
-          <div className={`${contentStyle} bg-gray-600 h-6 w-full`}></div>
+          <div className={`${contentStyle} bg-gray-600 h-10 sm:h-6 w-full`}></div>
         </div>
 
         <div className="flex items-center w-1/3 justify-end gap-2">
-          <div className={`${contentStyle} bg-gray-600 h-6 w-full`}></div>
+          <div className={`${contentStyle} bg-gray-600 h-10 sm:h-6 w-full`}></div>
           {">"}
         </div>
       </div>
@@ -96,11 +96,11 @@ export default function LoaderPokemonInfo() {
       <div className="flex justify-between max-sm:text-xs">
         <div className="flex items-center w-1/3 gap-2">
           {"<"}
-          <div className={`${contentStyle} bg-gray-600 h-6 w-full`}></div>
+          <div className={`${contentStyle} bg-gray-600 h-10 sm:h-6 w-full`}></div>
         </div>
 
         <div className="flex items-center w-1/3 justify-end gap-2">
-          <div className={`${contentStyle} bg-gray-600 h-6 w-full`}></div>
+          <div className={`${contentStyle} bg-gray-600 h-10 sm:h-6 w-full`}></div>
           {">"}
         </div>
       </div>

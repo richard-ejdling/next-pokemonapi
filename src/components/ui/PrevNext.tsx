@@ -104,7 +104,7 @@ export default function PrevNext({ id }: { id: number }) {
           rel="stylesheet"
           href={`${id - 1}`}
         >
-          <div className="flex items-center">
+          <div className="flex items-center max-sm:h-10">
             {"< "}
             {prevPokemon ? (
               <div className="flex flex-col sm:flex-row">
@@ -140,7 +140,7 @@ export default function PrevNext({ id }: { id: number }) {
           rel="stylesheet"
           href={`${id + 1}`}
         >
-          <div className="flex items-center">
+          <div className="flex items-center max-sm:h-10">
             <span className="sr-only">Go to next Pokémon</span>
             <img
               className="h-6 pr-2 max-sm:hidden"
