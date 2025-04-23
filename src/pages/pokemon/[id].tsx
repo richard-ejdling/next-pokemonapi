@@ -115,9 +115,9 @@ export default function Pokemon() {
       {error ? (
         <p>
           Something went wrong. <br />
-          Please try again or use a different search term.
+          Please try again or adjust your search.
         </p>
-      ) : data ? (
+      ) : !isLoading && data ? (
         <>
           <PrevNext id={data.id} />
           <PokemonInfo data={data} />
