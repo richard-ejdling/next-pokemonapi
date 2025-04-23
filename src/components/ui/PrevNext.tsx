@@ -74,7 +74,7 @@ export default function PrevNext({ id }: { id: number }) {
     {
       enabled: !!id,
       onSuccess: (data) => {
-        console.log("Prev: ", data.name);
+        // console.log("Prev: ", data.name);
         createPokemon(data, setPrevPokemon);
       },
       onError: (error) => {
@@ -88,7 +88,7 @@ export default function PrevNext({ id }: { id: number }) {
     {
       enabled: !!id,
       onSuccess: (data) => {
-        /* console.log("Next: ", data.name); */
+        // console.log("Next: ", data.name);
         createPokemon(data, setNextPokemon);
       },
     }

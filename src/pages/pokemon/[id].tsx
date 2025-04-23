@@ -89,6 +89,7 @@ export default function Pokemon() {
         /* console.log("User fetched!", data.name); */
         createPokemon(data);
       },
+      onError: (error) => console.error(error),
     }
   );
 
@@ -97,9 +98,6 @@ export default function Pokemon() {
       getData(id, setData);
     }
   }, [id]); */
-
-  isLoading ?? {};
-  error ?? {};
 
   return (
     <div className="flex flex-col gap-2 bg-gray-950 max-w-5xl m-auto my-2 max-lg:mx-2">
@@ -114,7 +112,12 @@ export default function Pokemon() {
         <Random />
       </div>
 
-      { data ? (
+      {error ? (
+        <p>
+          Something went wrong. <br />
+          Please try again or use a different search term.
+        </p>
+      ) : data ? (
         <>
           <PrevNext id={data.id} />
           <PokemonInfo data={data} />
