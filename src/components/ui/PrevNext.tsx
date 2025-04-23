@@ -98,7 +98,7 @@ export default function PrevNext({ id }: { id: number }) {
   console.log(nextPokemon) */
 
   return (
-    <div className="flex justify-between max-sm:text-xs">
+    <div className="flex justify-between max-sm:text-xs my-2">
       {id !== 1 ? (
         <Link
           rel="stylesheet"
