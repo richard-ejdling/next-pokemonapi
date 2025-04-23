@@ -4,19 +4,33 @@ import { useEffect, useState } from "react";
 
 export default function Random({ route = "" }: { route?: string }) {
   const router = useRouter();
-
+  const defaultEntries = 1025;
   const [entries, setEntries] = useState(1025);
 
   async function getEntriesNr() {
-    const data = await fetcher("https://pokeapi.co/api/v2/pokedex/1/");
-    data && typeof data.pokemon_entries && setEntries(data.pokemon_entries.number);
+    const data = await fetch("https://pokeapi.co/api/v2/pokedex/1/")
+      .then((res) => {
+        if (!res.ok) {
+          console.error(
+            `Couldn't fetch latest pokemon: ${res.status}. 'Next pokemon' button capped at ${defaultEntries}`
+          );
+        }
+        return res.json();
+      })
+      .catch((error) =>
+        console.error(
+          `Couldn't fetch latest pokemon: ${error.message}. 'Next pokemon' button capped at ${defaultEntries}`
+        )
+      );
+
+    data && setEntries(data.pokemon_entries.length);
   }
 
   useEffect(() => {
     getEntriesNr();
   }, []);
 
-  const max = entries ? entries : 1025;
+  const max = entries ? entries : defaultEntries;
   function randomPokemon() {
     const randomNr = Math.floor(Math.random() * max) + 1;
 

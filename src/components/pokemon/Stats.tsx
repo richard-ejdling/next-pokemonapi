@@ -13,7 +13,8 @@ export default function Stats({ stats }: PokemonStats) {
     <div className="flex h-full p-4 gap-2">
       <div className="flex flex-col justify-between h-full w-full">
         <div className="flex">
-          <span className="ml-1">{total}</span>
+          <h4 className="w-[120px] shrink-0">Total</h4>
+          <span className="">{total}</span>
         </div>
         <div className="flex items-end">
           <h4 className="w-[120px] shrink-0">HP</h4>
@@ -24,13 +25,16 @@ export default function Stats({ stats }: PokemonStats) {
             }}
           >
             <span
-              className={`${hp <= 45 && "hidden"} sm:hidden`}
-              style={{ textShadow: "1px 1px black" }}
+              /* className={`${hp <= 45 && "hidden"} sm:hidden`} */
+              style={{
+                textShadow:
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+              }}
             >
               {hp}
             </span>
           </div>
-          <span className={`w-[58px] ml-1 ${hp > 45 ? "max-sm:text-transparent" : ""}`}>{hp}</span>
+          {/* <span className={`w-[58px] ml-1 ${hp > 45 ? "max-sm:text-transparent" : ""}`}>{hp}</span> */}
         </div>
         <div className="flex items-end">
           <h4 className="w-[120px] shrink-0">Attack</h4>
@@ -41,15 +45,18 @@ export default function Stats({ stats }: PokemonStats) {
             }}
           >
             <span
-              className={`${attack <= 45 && "hidden"} sm:hidden`}
-              style={{ textShadow: "1px 1px black" }}
+              /* className={`${attack <= 45 && "hidden"} sm:hidden`} */
+              style={{
+                textShadow:
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+              }}
             >
               {attack}
             </span>
           </div>
-          <span className={`w-[58px] ml-1 ${attack > 45 ? "max-sm:text-transparent" : ""}`}>
+          {/* <span className={`w-[58px] ml-1 ${attack > 45 ? "max-sm:text-transparent" : ""}`}>
             {attack}
-          </span>
+          </span> */}
         </div>
         <div className="flex items-end">
           <h4 className="w-[120px] shrink-0">Defence</h4>
@@ -60,15 +67,18 @@ export default function Stats({ stats }: PokemonStats) {
             }}
           >
             <span
-              className={`${defence <= 45 && "hidden"} sm:hidden`}
-              style={{ textShadow: "1px 1px black" }}
+              /* className={`${defence <= 45 && "hidden"} sm:hidden`} */
+              style={{
+                textShadow:
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+              }}
             >
               {defence}
             </span>
           </div>
-          <span className={`w-[58px] ml-1 ${defence > 45 ? "max-sm:text-transparent" : ""}`}>
+          {/* <span className={`w-[58px] ml-1 ${defence > 45 ? "max-sm:text-transparent" : ""}`}>
             {defence}
-          </span>
+          </span> */}
         </div>
         <div className="flex items-end">
           <h4 className="w-[120px] shrink-0">Sp. Atk</h4>
@@ -79,15 +89,18 @@ export default function Stats({ stats }: PokemonStats) {
             }}
           >
             <span
-              className={`${special_attack <= 45 && "hidden"} sm:hidden`}
-              style={{ textShadow: "1px 1px black" }}
+              /* className={`${special_attack <= 45 && "hidden"} sm:hidden`} */
+              style={{
+                textShadow:
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+              }}
             >
               {special_attack}
             </span>
           </div>
-          <span className={`w-[58px] ml-1 ${special_attack > 45 ? "max-sm:text-transparent" : ""}`}>
+          {/* <span className={`w-[58px] ml-1 ${special_attack > 45 ? "max-sm:text-transparent" : ""}`}>
             {special_attack}
-          </span>
+          </span> */}
         </div>
         <div className="flex items-end">
           <h4 className="w-[120px] shrink-0">Sp. Def</h4>
@@ -98,17 +111,20 @@ export default function Stats({ stats }: PokemonStats) {
             }}
           >
             <span
-              className={`${special_defence <= 45 && "hidden"} sm:hidden`}
-              style={{ textShadow: "1px 1px black" }}
+              /* className={`${special_defence <= 45 && "hidden"} sm:hidden`} */
+              style={{
+                textShadow:
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+              }}
             >
               {special_defence}
             </span>
           </div>
-          <span
+          {/* <span
             className={`w-[58px] ml-1 ${special_defence > 45 ? "max-sm:text-transparent" : ""}`}
           >
             {special_defence}
-          </span>
+          </span> */}
         </div>
         <div className="flex items-end">
           <h4 className="w-[120px] shrink-0">Speed</h4>
@@ -119,15 +135,18 @@ export default function Stats({ stats }: PokemonStats) {
             }}
           >
             <span
-              className={`${speed <= 45 && "hidden"} sm:hidden`}
-              style={{ textShadow: "1px 1px black" }}
+              /* className={`${speed <= 45 && "hidden"} sm:hidden`} */
+              style={{
+                textShadow:
+                  "0.25px 0.25px black, 0.5px 0.5px black, 0.75px 0.75px black, 1px 1px black, 1.25px 1.25px black, 1.5px 1.5px black, 1.75px 1.75px black, 2px 2px black",
+              }}
             >
               {speed}
             </span>
           </div>
-          <span className={`w-[58px] ml-1 ${speed > 45 ? "max-sm:text-transparent" : ""}`}>
+          {/* <span className={`w-[58px] ml-1 ${speed > 45 ? "max-sm:text-transparent" : ""}`}>
             {speed}
-          </span>
+          </span> */}
         </div>
       </div>
     </div>
