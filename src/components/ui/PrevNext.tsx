@@ -1,30 +1,52 @@
 import { PrevNextPokemon, Pokemon } from "@/types/types";
 import { fetcher } from "@/utils/fetcher";
 import Link from "next/link";
-import { SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
 export default function PrevNext({ id }: { id: number }) {
-  const [entries, setEntries] = useState(1025);
+  const defaultEntries = 1025;
+  const [entries, setEntries] = useState(defaultEntries);
   const [prevPokemon, setPrevPokemon] = useState<PrevNextPokemon>();
   const [nextPokemon, setNextPokemon] = useState<PrevNextPokemon>();
 
   async function getEntriesNr() {
-    const data = await fetcher("https://pokeapi.co/api/v2/pokedex/1/");
+    const data = await fetch("https://pokeapi.co/api/v2/pokedex/1/")
+      .then((res) => {
+        if (!res.ok) {
+          console.error(
+            `Couldn't fetch latest pokemon: ${res.status}. 'Next' button capped at ${defaultEntries}`
+          );
+        }
+        return res.json();
+      })
+      .catch((error) =>
+        console.error(
+          `Couldn't fetch latest pokemon: ${error.message}. 'Next' button capped at ${defaultEntries}`
+        )
+      );
 
-    console.log("data", data);
-    setEntries(data.pokemon_entries.length);
+    data && setEntries(data.pokemon_entries.length);
   }
 
-  async function getData(
+  function createPokemon(
+    data: any,
+    setState: Dispatch<SetStateAction<PrevNextPokemon | undefined>>
+  ) {
+    const pokemon: { id: number; name: string; artwork: string } = {
+      id: data.id,
+      name: data.name,
+      artwork: data.sprites.other["official-artwork"].front_default,
+    };
+    setState(pokemon);
+  }
+
+  /* async function getData(
     id: string,
     setState: React.Dispatch<SetStateAction<PrevNextPokemon | undefined>>
   ) {
-    /* const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-      const responeData = await response.json(); */
     const data = await fetcher(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    /* console.log(id, data); */
-    // gör error om fel id skickats/ inte fått svar tillbaka: ex if(response.ok){} else nånting(response.status) osv.
-
+    
     const pokemon: { id: number; name: string; artwork: string } = {
       id: data.id,
       name: data.name,
@@ -33,21 +55,47 @@ export default function PrevNext({ id }: { id: number }) {
 
     //zod för att pokemon variabeln ska inehålla rätt saker / inte sakna något?
     setState(pokemon);
-  }
+  } */
 
   useEffect(() => {
     getEntriesNr();
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (id) {
       id !== 1 && getData((id - 1).toString(), setPrevPokemon);
       id !== 1025 && getData((id + 1).toString(), setNextPokemon);
     }
-  }, [id]);
+  }, [id]); */
 
-  console.log(prevPokemon)
-  console.log(nextPokemon)
+  const { isLoading: loadingPrev, error: errorPrev } = useQuery(
+    ["prevPokemon", id],
+    () => fetch(`https://pokeapi.co/api/v2/pokemon/${id - 1}`).then((data) => data.json()),
+    {
+      enabled: !!id,
+      onSuccess: (data) => {
+        console.log("Prev: ", data.name);
+        createPokemon(data, setPrevPokemon);
+      },
+      onError: (error) => {
+        console.log('error')
+      }
+    }
+  );
+  const { isLoading: loadingNext, error: errorNext } = useQuery(
+    ["nextPokemon", id],
+    () => fetch(`https://pokeapi.co/api/v2/pokemon/${id + 1}`).then((data) => data.json()),
+    {
+      enabled: !!id,
+      onSuccess: (data) => {
+        /* console.log("Next: ", data.name); */
+        createPokemon(data, setNextPokemon);
+      },
+    }
+  );
+
+  /* console.log(prevPokemon)
+  console.log(nextPokemon) */
 
   return (
     <div className="flex justify-between max-sm:text-xs">
